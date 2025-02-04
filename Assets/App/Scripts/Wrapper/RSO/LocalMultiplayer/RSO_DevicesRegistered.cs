@@ -1,13 +1,27 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "RSO_DevicesRegistered", menuName = "RSO/LocalMultiplayer/RSO_DevicesRegistered")]
-public class RSO_DevicesRegistered : BT.ScriptablesObject.RuntimeScriptableObject<List<DeviceData>>{}
-
-public struct DeviceData
+namespace BT.LocalMultiplayer
 {
-    public InputDevice InputDevice;
-    public int DeviceOrderAuthoring;
-    public GameObject AuthoredGameObject;
+    [CreateAssetMenu(fileName = "RSO_DevicesRegistered", menuName = "RSO/LocalMultiplayer/RSO_DevicesRegistered")]
+    public class RSO_DevicesRegistered : BT.ScriptablesObject.RuntimeScriptableObject<List<DeviceData>>
+    {
+        public int ActivePlayerCount
+        {
+            get
+            {
+                const int count = 0;
+                return Value?.Count(deviceData => deviceData.MonitoredInputReader?.GetControlledGameObject() != null) ?? count;
+            }
+        }
+    }
+
+    public struct DeviceData
+    {
+        public InputDevice InputDevice;
+        public int DeviceOrderMonitor;
+        public IInputReader MonitoredInputReader;
+    }
 }

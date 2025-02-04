@@ -17,13 +17,7 @@ namespace BT.LocalMultiplayer
 
         private void DeviceChangeCheck(InputDevice device, InputDeviceChange deviceChange)
         {
-            int index = 0;
-            for (var i = 0; i < rsoDeviceRegistered.Value.Count; i++)
-            {
-                index = i;
-                if (rsoDeviceRegistered.Value[i].InputDevice == device) break;
-                if (i == rsoDeviceRegistered.Value.Count -1) return;
-            }
+            if (!DeviceExistInGame(device, out var index)) return;
 
             switch (deviceChange)
             {
@@ -35,7 +29,18 @@ namespace BT.LocalMultiplayer
                     break;
             }
         }
-        
-        
+
+        private bool DeviceExistInGame(InputDevice device, out int index)
+        {
+            index = 0;
+            for (var i = 0; i < rsoDeviceRegistered.Value.Count; i++)
+            {
+                index = i;
+                if (rsoDeviceRegistered.Value[i].InputDevice == device) break;
+                if (i == rsoDeviceRegistered.Value.Count -1) return false;
+            }
+
+            return true;
+        }
     }
 }

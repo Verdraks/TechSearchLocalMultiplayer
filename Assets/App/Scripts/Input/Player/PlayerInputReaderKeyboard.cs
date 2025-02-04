@@ -30,6 +30,11 @@ public class PlayerInputReaderKeyboard : MonoBehaviour, IInputReader,InputAction
         _inputActionPlayer.Disable();
     }
 
+    public GameObject GetControlledGameObject()
+    {
+        return gameObject;
+    }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {

@@ -34,6 +34,11 @@ public class PlayerInputReaderMouse : MonoBehaviour, IInputReader, InputActionPl
         _inputActionPlayer.Disable();
     }
 
+    public GameObject GetControlledGameObject()
+    {
+        return gameObject;
+    }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {

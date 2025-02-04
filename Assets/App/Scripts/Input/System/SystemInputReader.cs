@@ -22,6 +22,11 @@ public class SystemInputReader : MonoBehaviour, IInputReader, InputActionSystem.
         _inputActionSystem.Disable();
     }
 
+    public GameObject GetControlledGameObject()
+    {
+        return gameObject;
+    }
+
     void InputActionSystem.IControllerActions.OnSelect(InputAction.CallbackContext context)
     {
         rseInputSelect.Call(context.control.device);

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0423cb2211ec4c239e6c4893bbe9cbeb, type: 3}
+  m_Name: SSO_InputReaderFactoryPcSupport
+  m_EditorClassIdentifier: 
+  prefabKeyboard: {fileID: 35773888851243557, guid: d8e15d583756fc34fb5d71dcbdc78e3d, type: 3}
+  prefabMouse: {fileID: 7893775122759796238, guid: e94e11c4eeb0c5c48a0dca29ba289602, type: 3}
