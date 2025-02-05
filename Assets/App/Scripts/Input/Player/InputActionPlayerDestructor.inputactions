@@ -1,27 +1,18 @@
 {
-    "name": "InputActionPlayer",
+    "name": "InputActionPlayerDestructor",
     "maps": [
         {
             "name": "Controller",
             "id": "b5dee3bd-55fb-430d-887f-d8b3af51cf35",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "Shoot",
                     "type": "Value",
                     "id": "e187f634-a9f0-41d0-a0f5-953ba1fc226e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "5f954819-8f26-4b95-94a9-09c9256740a5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -32,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Move",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -43,7 +34,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Shoot",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -54,7 +45,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -65,7 +56,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -76,7 +67,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -87,31 +78,9 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Move",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "3a0135c4-9139-4841-bf9f-047b6ba88f23",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "af2cc3a6-9c7b-436e-817c-089400f6e742",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

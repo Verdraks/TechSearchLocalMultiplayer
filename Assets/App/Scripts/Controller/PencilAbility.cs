@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControllerCreator : MonoBehaviour
+public class PencilAbility : MonoBehaviour
 {
     [Header("Settings")] 
     [SerializeField] private float maxPencilInk;
@@ -56,16 +56,9 @@ public class PlayerControllerCreator : MonoBehaviour
         _shape = Instantiate(drawPrefab).GetComponent<Shape>();
         _shape.InitializeShape();
         
-        Camera cam = Camera.main;
-        if (!cam)
-        {
-            Destroy(_shape);
-            StopCoroutine(DrawShape());
-        }
-        
         while (_isDrawing && _pencilInk >= pencilInkCost)
         {
-            Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition - new Vector3(0,0,cam.transform.position.z));
+            Vector2 mousePosition = Macro2D.MousePosWorld;
             
             if (_points.Count == 0 || (_points[^1] - mousePosition).sqrMagnitude > DistancePointThreshold)
             {
