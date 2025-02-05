@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using UnityEngine.Serialization;
 
 public class PlayerInputReaderKeyboard : MonoBehaviour, IInputReader,InputActionPlayer.IControllerActions
 {

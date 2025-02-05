@@ -64,6 +64,7 @@ public class PlayerInputReaderMouse : MonoBehaviour, IInputReader, InputActionPl
                 onInputShoot.Invoke();
                 break;
             case InputActionPhase.Canceled:
+                onInputShoot.Invoke();
                 break;
         }
     }

@@ -50,7 +50,7 @@ public partial class @InputActionPlayer: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""df5c4c81-19f4-4dbe-8946-ad284ab285e6"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
@@ -116,7 +116,7 @@ public partial class @InputActionPlayer: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3a0135c4-9139-4841-bf9f-047b6ba88f23"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",

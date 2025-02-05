@@ -12,6 +12,7 @@ namespace BT.LocalMultiplayer
         
         [Header("References")] 
         [SerializeField] private InputReaderFactory inputReaderFactory;
+        [SerializeField] private SpawningStrategy spawningStrategy;
         [Space(10)]
         [SerializeField] private RSO_DevicesRegistered rsoDevicesRegistered;
         
@@ -39,11 +40,16 @@ namespace BT.LocalMultiplayer
         {
             var inputReaderInstantiated = inputReaderFactory.CreateLocalMultiplayerInputReader(inputDevice);
             if (!inputReaderInstantiated) return;
+            
+            //Move SpawningStrategy to a modular system to change it at runtime
+            inputReaderInstantiated.transform.position = spawningStrategy.GetSpawnPosition();
+            
             var deviceData = new DeviceData
             {
                 InputDevice = inputDevice,
                 MonitoredInputReader = inputReaderInstantiated.GetComponent<IInputReader>()
             };
+            
             rsoDevicesRegistered.Value.Add(deviceData);
             rseDeviceDataCreated.Call(deviceData);
         }

@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6fa82cc1f9ccfb4087813e53ff7e2d7, type: 3}
-  m_Name: LocalMultiplayerSettings
+  m_Script: {fileID: 11500000, guid: 233af82600924b92ad98a93830aef0d5, type: 3}
+  m_Name: SSO_SpawningRandomPoint
   m_EditorClassIdentifier: 
-  maxPlayers: 2
-  splitScreen: 0
+  points:
+  - {x: -2, y: 0, z: 0}
+  - {x: 0, y: 2, z: 0}
+  - {x: 2, y: 0, z: 0}

@@ -46,8 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localMultiplayerSettings: {fileID: 11400000, guid: f50c92687a9153f44bb17bf4a5263ef1, type: 2}
   inputReaderFactory: {fileID: 11400000, guid: d9cfeaffabe9a7d49b26cf1b4293ca1f, type: 2}
+  spawningStrategy: {fileID: 11400000, guid: 5c2147cb0e54ce24cacad7c6749fb6e4, type: 2}
   rsoDevicesRegistered: {fileID: 11400000, guid: 04d23efd06ee45d489d883af2368a5a0, type: 2}
   rseDeviceRegister: {fileID: 11400000, guid: 8060a49d05b4a4146b86166ea832c518, type: 2}
+  rseDeviceDataCreated: {fileID: 11400000, guid: ee4e5235ad241cb46bb1b273034c0fbf, type: 2}
 --- !u!1 &870169870780112908
 GameObject:
   m_ObjectHideFlags: 0

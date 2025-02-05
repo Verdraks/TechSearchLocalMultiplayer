@@ -14,6 +14,8 @@ public class PartyManager : MonoBehaviour
     [SerializeField] private RSE_DeviceRegister rseDeviceRegister;
     
     private bool _partyStarted;
+    
+    private const int PlayerCountToStart = 1;
 
     private void OnEnable() => rseInputSelect.action += TryAddNewPlayer;
     private void OnDisable() => rseInputSelect.action -= TryAddNewPlayer;
@@ -22,7 +24,15 @@ public class PartyManager : MonoBehaviour
     {
         if (_partyStarted) return;
         rseDeviceRegister.Call(inputDevice);
-        if (rsoDeviceRegistered.ActivePlayerCount >= 2) _partyStarted = true;
+        if (rsoDeviceRegistered.ActivePlayerCount >= PlayerCountToStart)
+        {
+            _partyStarted = true;
+            rseInputSelect.action -= TryAddNewPlayer;
+            foreach (var deviceData in rsoDeviceRegistered.Value)
+            {
+                deviceData.MonitoredInputReader.EnableInputReader();
+            }
+        }
     }
     
 }
