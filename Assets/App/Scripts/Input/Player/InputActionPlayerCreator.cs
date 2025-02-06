@@ -70,67 +70,12 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""15fb1a9f-fea5-43b1-86e1-731c51863b72"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""49987e66-d1c3-4bbd-b292-ad329c50cd0d"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""dd7285a9-1f8b-45bf-b4d9-7b2ce9fc0811"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""a4a53295-5996-4129-b4e9-b2c5bb0ae027"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""3a0135c4-9139-4841-bf9f-047b6ba88f23"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
-                    ""action"": ""Draw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""af2cc3a6-9c7b-436e-817c-089400f6e742"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
                     ""action"": ""Draw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -145,17 +90,6 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
             ""devices"": [
                 {
                     ""devicePath"": ""<Mouse>/{Back}"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Keyboard"",
-            ""bindingGroup"": ""Keyboard"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>/{Back}"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -285,15 +219,6 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
         {
             if (m_MouseSchemeIndex == -1) m_MouseSchemeIndex = asset.FindControlSchemeIndex("Mouse");
             return asset.controlSchemes[m_MouseSchemeIndex];
-        }
-    }
-    private int m_KeyboardSchemeIndex = -1;
-    public InputControlScheme KeyboardScheme
-    {
-        get
-        {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
-            return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }
     public interface IControllerActions

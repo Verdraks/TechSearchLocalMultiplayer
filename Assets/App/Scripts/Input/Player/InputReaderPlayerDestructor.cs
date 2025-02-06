@@ -2,12 +2,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using UnityEngine.Serialization;
 
 public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActionPlayerDestructor.IControllerActions
 {
     
     [Header("Output")]
-    public UnityEvent onInputShoot;
+    public UnityEvent<Vector2> onInputMove;
+    public UnityEvent onInputDash;
     
     private InputActionPlayerDestructor _inputActionPlayer;
 
@@ -30,13 +32,21 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
         return gameObject;
     }
 
-    void InputActionPlayerDestructor.IControllerActions.OnShoot(InputAction.CallbackContext context)
+    void InputActionPlayerDestructor.IControllerActions.OnMove(InputAction.CallbackContext context)
     {
         switch (context.phase)
         {
             case InputActionPhase.Started:
-                onInputShoot.Invoke();
+                onInputMove?.Invoke(context.ReadValue<Vector2>());
+                break;
+            case InputActionPhase.Canceled:
+                onInputMove?.Invoke(context.ReadValue<Vector2>());
                 break;
         }
+    }
+
+    void InputActionPlayerDestructor.IControllerActions.OnDash(InputAction.CallbackContext context)
+    {
+        onInputDash?.Invoke();
     }
 }

@@ -17,13 +17,14 @@ public class PencilAbility : MonoBehaviour
     
     private bool _isDrawing;
     private bool _isInDrawingArea;
+    private float _pencilInk;
 
     private readonly List<Vector2> _points = new();
+    private readonly RaycastHit2D[] _hitsAreaDraw = new RaycastHit2D[1];
     private Shape _shape;
     
     private const float DistancePointThreshold = 0.1f;
 
-    private float _pencilInk;
 
     private void Awake() => _pencilInk = maxPencilInk/2;
 
@@ -44,7 +45,7 @@ public class PencilAbility : MonoBehaviour
 
     private void CheckPencilInDrawingArea()
     {
-        _isInDrawingArea = Physics2D.Raycast(Macro2D.MousePosWorld, Vector2.zero, layerMaskDraw);
+        _isInDrawingArea = Physics2D.RaycastNonAlloc(Macro2D.MousePosWorld, Vector2.zero,_hitsAreaDraw ,Mathf.Infinity,layerMaskDraw) > 0;
     }
 
     private void Update()

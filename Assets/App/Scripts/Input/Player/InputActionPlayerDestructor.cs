@@ -28,27 +28,25 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
             ""id"": ""b5dee3bd-55fb-430d-887f-d8b3af51cf35"",
             ""actions"": [
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""e187f634-a9f0-41d0-a0f5-953ba1fc226e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""13752354-9f6c-4859-85c2-8057e6b7bb76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""df5c4c81-19f4-4dbe-8946-ad284ab285e6"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse"",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""QZSD"",
                     ""id"": ""b89a9e73-fdba-49a2-a334-d2104f61a45a"",
@@ -56,7 +54,7 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -67,7 +65,7 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -78,7 +76,7 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -89,7 +87,7 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -100,25 +98,25 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Shoot"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce81e4b6-06da-4e41-b5ce-9cb6109e0637"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": [
-        {
-            ""name"": ""Mouse"",
-            ""bindingGroup"": ""Mouse"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Mouse>/{Back}"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        },
         {
             ""name"": ""Keyboard"",
             ""bindingGroup"": ""Keyboard"",
@@ -134,7 +132,8 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
 }");
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
-        m_Controller_Shoot = m_Controller.FindAction("Shoot", throwIfNotFound: true);
+        m_Controller_Move = m_Controller.FindAction("Move", throwIfNotFound: true);
+        m_Controller_Dash = m_Controller.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,12 +195,14 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
     // Controller
     private readonly InputActionMap m_Controller;
     private List<IControllerActions> m_ControllerActionsCallbackInterfaces = new List<IControllerActions>();
-    private readonly InputAction m_Controller_Shoot;
+    private readonly InputAction m_Controller_Move;
+    private readonly InputAction m_Controller_Dash;
     public struct ControllerActions
     {
         private @InputActionPlayerDestructor m_Wrapper;
         public ControllerActions(@InputActionPlayerDestructor wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Shoot => m_Wrapper.m_Controller_Shoot;
+        public InputAction @Move => m_Wrapper.m_Controller_Move;
+        public InputAction @Dash => m_Wrapper.m_Controller_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,16 +212,22 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
         {
             if (instance == null || m_Wrapper.m_ControllerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_ControllerActionsCallbackInterfaces.Add(instance);
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
         {
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -238,15 +245,6 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
         }
     }
     public ControllerActions @Controller => new ControllerActions(this);
-    private int m_MouseSchemeIndex = -1;
-    public InputControlScheme MouseScheme
-    {
-        get
-        {
-            if (m_MouseSchemeIndex == -1) m_MouseSchemeIndex = asset.FindControlSchemeIndex("Mouse");
-            return asset.controlSchemes[m_MouseSchemeIndex];
-        }
-    }
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -258,6 +256,7 @@ public partial class @InputActionPlayerDestructor: IInputActionCollection2, IDis
     }
     public interface IControllerActions
     {
-        void OnShoot(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
