@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4599bd769348ccb40aeb4c72fb5cc719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMaskDraw:
+    serializedVersion: 2
+    m_Bits: 128
   maxPencilInk: 50
   pencilInkSpeedRefill: 10
   pencilInkCost: 1.5

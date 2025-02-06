@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PencilAbility : MonoBehaviour
 {
     [Header("Settings")] 
+    [SerializeField] private LayerMask layerMaskDraw;
     [SerializeField] private float maxPencilInk;
     [SerializeField] private float pencilInkSpeedRefill;
     [SerializeField] private float pencilInkCost;
@@ -14,6 +16,7 @@ public class PencilAbility : MonoBehaviour
     [SerializeField] private GameObject drawPrefab;
     
     private bool _isDrawing;
+    private bool _isInDrawingArea;
 
     private readonly List<Vector2> _points = new();
     private Shape _shape;
@@ -32,7 +35,16 @@ public class PencilAbility : MonoBehaviour
     public void Draw()
     {
         _isDrawing = !_isDrawing;
-        if (_isDrawing) StartCoroutine(DrawShape());
+        if (_isDrawing)
+        {
+            CheckPencilInDrawingArea();
+            StartCoroutine(DrawShape());
+        }
+    }
+
+    private void CheckPencilInDrawingArea()
+    {
+        _isInDrawingArea = Physics2D.Raycast(Macro2D.MousePosWorld, Vector2.zero, layerMaskDraw);
     }
 
     private void Update()
@@ -56,7 +68,7 @@ public class PencilAbility : MonoBehaviour
         _shape = Instantiate(drawPrefab).GetComponent<Shape>();
         _shape.InitializeShape();
         
-        while (_isDrawing && _pencilInk >= pencilInkCost)
+        while (_isDrawing && _pencilInk >= pencilInkCost && _isInDrawingArea)
         {
             Vector2 mousePosition = Macro2D.MousePosWorld;
             
@@ -67,6 +79,7 @@ public class PencilAbility : MonoBehaviour
                 _pencilInk -= pencilInkCost;
             }
             yield return null;
+            CheckPencilInDrawingArea();
         }
         
         if (_points.Count < 2) Destroy(_shape.gameObject);
