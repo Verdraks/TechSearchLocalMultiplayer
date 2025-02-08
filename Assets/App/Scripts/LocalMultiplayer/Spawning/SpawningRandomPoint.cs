@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BT.LocalMultiplayer
 {
-    [CreateAssetMenu(fileName = "SSO_SpawningRandomPoint", menuName = "SSO/LocalMultiplayer/SpawingStrategy/SpawningRandomPoint")]
+    [CreateAssetMenu(fileName = "SSO_SpawningRandomPoint", menuName = "SSO/LocalMultiplayer/SpawningStrategy/SpawningRandomPoint")]
     public class SpawningRandomPoint : SpawningStrategy
     {
         public Vector3[] points;

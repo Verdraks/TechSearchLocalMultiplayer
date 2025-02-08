@@ -50,6 +50,7 @@ MonoBehaviour:
   rb: {fileID: 7862834563709513827}
   lineRenderer: {fileID: 397747077486221863}
   polygonCollider: {fileID: 3811504373529526396}
+  rseSceneLoaded: {fileID: 11400000, guid: 57c986ad544ecae4a868fd28599b663b, type: 2}
 --- !u!60 &3811504373529526396
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7782347213798477757}
   - component: {fileID: 1545715858405753779}
-  - component: {fileID: 1083547613549365672}
+  - component: {fileID: 7459788809768752657}
   - component: {fileID: 3712904830820454586}
   - component: {fileID: 6310179424746818135}
   m_Layer: 0
   m_Name: PlayerDestructor
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,8 +51,8 @@ MonoBehaviour:
   onInputMove:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1083547613549365672}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 7459788809768752657}
+        m_TargetAssemblyTypeName: TarodevController.PlayerController, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 0
         m_Arguments:
@@ -63,12 +63,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onInputDash:
+  onInputJumpStarted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1083547613549365672}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Dash
+      - m_Target: {fileID: 7459788809768752657}
+        m_TargetAssemblyTypeName: TarodevController.PlayerController, Assembly-CSharp
+        m_MethodName: JumpPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -78,7 +78,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1083547613549365672
+  onInputJumpPerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7459788809768752657}
+        m_TargetAssemblyTypeName: TarodevController.PlayerController, Assembly-CSharp
+        m_MethodName: JumpPerformed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onInputJumpCanceled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7459788809768752657}
+        m_TargetAssemblyTypeName: TarodevController.PlayerController, Assembly-CSharp
+        m_MethodName: JumpReleased
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7459788809768752657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,12 +117,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 35773888851243557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9b39267dd1d2a48a735f1431b415c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ab62f148a461f0439716c634477f63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
-  dashForce: 5
-  rb: {fileID: 3712904830820454586}
+  _stats: {fileID: 11400000, guid: 6a25a3b5f07f58945bf5ddd2eb3f6b9e, type: 2}
+  _rb: {fileID: 3712904830820454586}
+  _col: {fileID: 6310179424746818135}
 --- !u!50 &3712904830820454586
 Rigidbody2D:
   serializedVersion: 4

@@ -9,7 +9,9 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
     
     [Header("Output")]
     public UnityEvent<Vector2> onInputMove;
-    public UnityEvent onInputDash;
+    public UnityEvent onInputJumpStarted;
+    public UnityEvent onInputJumpPerformed;
+    public UnityEvent onInputJumpCanceled;
     
     private InputActionPlayerDestructor _inputActionPlayer;
 
@@ -45,8 +47,19 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
         }
     }
 
-    void InputActionPlayerDestructor.IControllerActions.OnDash(InputAction.CallbackContext context)
+    public void OnJump(InputAction.CallbackContext context)
     {
-        onInputDash?.Invoke();
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                onInputJumpStarted?.Invoke();
+                break;
+            case InputActionPhase.Performed:
+                onInputJumpPerformed?.Invoke();
+                break;
+            case InputActionPhase.Canceled:
+                onInputJumpCanceled?.Invoke();
+                break;
+        }
     }
 }

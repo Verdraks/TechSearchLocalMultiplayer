@@ -58,5 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48ebe4876757ef46a50bf9e3dc01c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controllers:
+  controllers:
   - {fileID: 2424808152918738928}
+  spawningSpawnPoint: {fileID: 11400000, guid: eb33d0c2478a17f4aa6221d858156705, type: 2}
+  rsoDeviceRegistered: {fileID: 11400000, guid: 04d23efd06ee45d489d883af2368a5a0, type: 2}
+  rsePlayerDie: {fileID: 11400000, guid: 5263f3e1b195e0e41a29f545c32a01f9, type: 2}
+  rseSceneLoaded: {fileID: 11400000, guid: 57c986ad544ecae4a868fd28599b663b, type: 2}

@@ -15,7 +15,7 @@ public class PartyManager : MonoBehaviour
     
     private bool _partyStarted;
     
-    private const int PlayerCountToStart = 1;
+    public const int PlayerCountToStart = 2;
 
     private void OnEnable() => rseInputSelect.action += TryAddNewPlayer;
     private void OnDisable() => rseInputSelect.action -= TryAddNewPlayer;

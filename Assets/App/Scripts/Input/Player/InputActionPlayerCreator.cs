@@ -44,6 +44,15 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""6a4451e8-9325-4899-968d-cba9f84ab8fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -79,6 +88,17 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
                     ""action"": ""Draw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de5e7394-b6cd-4f7d-85b2-380516e0e7cc"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +121,7 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
         m_Controller_Shoot = m_Controller.FindAction("Shoot", throwIfNotFound: true);
         m_Controller_Draw = m_Controller.FindAction("Draw", throwIfNotFound: true);
+        m_Controller_Move = m_Controller.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -164,12 +185,14 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
     private List<IControllerActions> m_ControllerActionsCallbackInterfaces = new List<IControllerActions>();
     private readonly InputAction m_Controller_Shoot;
     private readonly InputAction m_Controller_Draw;
+    private readonly InputAction m_Controller_Move;
     public struct ControllerActions
     {
         private @InputActionPlayerCreator m_Wrapper;
         public ControllerActions(@InputActionPlayerCreator wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_Controller_Shoot;
         public InputAction @Draw => m_Wrapper.m_Controller_Draw;
+        public InputAction @Move => m_Wrapper.m_Controller_Move;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -185,6 +208,9 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
             @Draw.started += instance.OnDraw;
             @Draw.performed += instance.OnDraw;
             @Draw.canceled += instance.OnDraw;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -195,6 +221,9 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
             @Draw.started -= instance.OnDraw;
             @Draw.performed -= instance.OnDraw;
             @Draw.canceled -= instance.OnDraw;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -225,5 +254,6 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
     {
         void OnShoot(InputAction.CallbackContext context);
         void OnDraw(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

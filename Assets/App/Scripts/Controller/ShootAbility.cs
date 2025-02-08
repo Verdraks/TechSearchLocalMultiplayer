@@ -29,7 +29,7 @@ public class ShootAbility : MonoBehaviour
         {
             for (int i = 0; i < threshold; i++)
             {
-                _hitsCache[i].rigidbody.AddForce(((Vector3)positionShoot -_hitsCache[i].transform.position) * forceShoot,ForceMode2D.Impulse);
+                _hitsCache[i].rigidbody.AddForce((_hitsCache[i].transform.position-(Vector3)positionShoot).normalized * forceShoot,ForceMode2D.Impulse);
             }
         }
     }

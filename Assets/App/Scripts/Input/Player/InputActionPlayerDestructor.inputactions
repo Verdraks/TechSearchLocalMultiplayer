@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dash",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "13752354-9f6c-4859-85c2-8057e6b7bb76",
                     "expectedControlType": "Button",
@@ -83,11 +83,11 @@
                 {
                     "name": "",
                     "id": "ce81e4b6-06da-4e41-b5ce-9cb6109e0637",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Dash",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

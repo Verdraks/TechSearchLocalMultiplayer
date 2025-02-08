@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
     [Header("Output")] 
     public UnityEvent onInputDraw;
     public UnityEvent<Vector2> onInputShoot;
+    public UnityEvent<Vector2> onInputMove;
     
     private InputActionPlayerCreator _inputActionPlayer;
 
@@ -18,12 +20,14 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
         _inputActionPlayer.Controller.SetCallbacks(this);
         _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(new InputDevice[] {Mouse.current });
         _inputActionPlayer.Enable();
+        Cursor.visible = false;
     }
 
     public void DisableInputReader()
     {
         _inputActionPlayer.Controller.SetCallbacks(null);
         _inputActionPlayer.Disable();
+        Cursor.visible = true;
     }
 
     public GameObject GetControlledGameObject()
@@ -52,5 +56,10 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
                 onInputDraw.Invoke();
                 break;
         }
+    }
+
+    void InputActionPlayerCreator.IControllerActions.OnMove(InputAction.CallbackContext context)
+    {
+        onInputMove.Invoke(Macro2D.MousePosWorld);
     }
 }
