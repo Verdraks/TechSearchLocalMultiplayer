@@ -41,7 +41,7 @@ namespace BT.LocalMultiplayer
             var inputReaderInstantiated = inputReaderFactory.CreateLocalMultiplayerInputReader(inputDevice);
             if (!inputReaderInstantiated) return;
             
-            //Move SpawningStrategy to a modular system to change it at runtime
+            
             inputReaderInstantiated.transform.position = spawningStrategy.GetSpawnPosition();
             
             var deviceData = new DeviceData
@@ -49,7 +49,12 @@ namespace BT.LocalMultiplayer
                 InputDevice = inputDevice,
                 MonitoredInputReader = inputReaderInstantiated.GetComponent<IInputReader>()
             };
-            
+
+            //Sorry is dirty
+            deviceData.MonitoredInputReader.AssignDevice(inputDevice is Keyboard
+                ? new[] { inputDevice, Mouse.current }
+                : new[] { inputDevice });
+
             rsoDevicesRegistered.Value.Add(deviceData);
             rseDeviceDataCreated.Call(deviceData);
         }

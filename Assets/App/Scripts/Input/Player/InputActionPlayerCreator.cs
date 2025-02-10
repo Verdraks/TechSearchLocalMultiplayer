@@ -49,7 +49,7 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""6a4451e8-9325-4899-968d-cba9f84ab8fa"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -62,7 +62,7 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": ""Keyboard_Mouse"",
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -80,11 +80,33 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0deda46b-3ffe-47c6-863a-9f711f2dc859"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3a0135c4-9139-4841-bf9f-047b6ba88f23"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": ""Keyboard_Mouse"",
+                    ""action"": ""Draw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f375f14-9769-4ff6-b634-1f436201c892"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Draw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -95,7 +117,18 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": ""Keyboard_Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c186fd4-071d-42a6-b902-200ecd2da001"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -105,11 +138,27 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Mouse"",
-            ""bindingGroup"": ""Mouse"",
+            ""name"": ""Keyboard_Mouse"",
+            ""bindingGroup"": ""Keyboard_Mouse"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Mouse>/{Back}"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Keyboard>/{Back}"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -241,13 +290,22 @@ public partial class @InputActionPlayerCreator: IInputActionCollection2, IDispos
         }
     }
     public ControllerActions @Controller => new ControllerActions(this);
-    private int m_MouseSchemeIndex = -1;
-    public InputControlScheme MouseScheme
+    private int m_Keyboard_MouseSchemeIndex = -1;
+    public InputControlScheme Keyboard_MouseScheme
     {
         get
         {
-            if (m_MouseSchemeIndex == -1) m_MouseSchemeIndex = asset.FindControlSchemeIndex("Mouse");
-            return asset.controlSchemes[m_MouseSchemeIndex];
+            if (m_Keyboard_MouseSchemeIndex == -1) m_Keyboard_MouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard_Mouse");
+            return asset.controlSchemes[m_Keyboard_MouseSchemeIndex];
+        }
+    }
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
+    {
+        get
+        {
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
     public interface IControllerActions

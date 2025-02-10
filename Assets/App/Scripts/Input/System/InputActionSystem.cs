@@ -51,11 +51,11 @@ public partial class @InputActionSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cc2183e5-ea4e-4307-a559-b548a5644271"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""b47547cc-7e48-4dd6-aff0-23c2134c52f5"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": """",
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

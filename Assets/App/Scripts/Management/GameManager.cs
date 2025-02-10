@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour
    {
       foreach (var controller in controllers)
       {
-         controller.GetComponent<IInputReader>().EnableInputReader();
+         var inputReader = controller.GetComponent<IInputReader>();
+         inputReader.AssignDevice();
+         inputReader.EnableInputReader();
       }
    }
 

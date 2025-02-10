@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6310179424746818135}
   m_Layer: 0
   m_Name: PlayerDestructor
-  m_TagString: Player
+  m_TagString: PlayerDestructor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: 6a25a3b5f07f58945bf5ddd2eb3f6b9e, type: 2}
   _rb: {fileID: 3712904830820454586}
   _col: {fileID: 6310179424746818135}
+  rsePlayerDie: {fileID: 11400000, guid: 5263f3e1b195e0e41a29f545c32a01f9, type: 2}
 --- !u!50 &3712904830820454586
 Rigidbody2D:
   serializedVersion: 4

@@ -11,7 +11,7 @@ public class ExitPoint : MonoBehaviour
     
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerDestructor"))
         {
             if (String.IsNullOrEmpty(nextScene)) return;
             rseLoadScene.Call(nextScene);

@@ -8,10 +8,10 @@ public class SystemInputReader : MonoBehaviour, IInputReader, InputActionSystem.
     [SerializeField] private RSE_InputSelect rseInputSelect;
     
     private InputActionSystem _inputActionSystem;
+    private IInputReader inputReaderImplementation;
 
     void IInputReader.EnableInputReader()
     {
-        _inputActionSystem ??= new InputActionSystem();
         _inputActionSystem.Controller.SetCallbacks(this);
         _inputActionSystem.Enable();
     }
@@ -20,6 +20,11 @@ public class SystemInputReader : MonoBehaviour, IInputReader, InputActionSystem.
     {
         _inputActionSystem.Controller.SetCallbacks(null);
         _inputActionSystem.Disable();
+    }
+
+    void IInputReader.AssignDevice(InputDevice[] inputDevices)
+    {
+        _inputActionSystem = new InputActionSystem();
     }
 
     public GameObject GetControlledGameObject()

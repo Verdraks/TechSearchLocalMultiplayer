@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0514b121a4a4b47a73e901c7cb09be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rsoDeviceRegistered: {fileID: 11400000, guid: 04d23efd06ee45d489d883af2368a5a0, type: 2}
+  rsoDeviceRegistered: {fileID: 11400000, guid: 6c27dd3db71ea8f41b4f32cd3193a6f1, type: 2}
   rseInputSelect: {fileID: 11400000, guid: 8c782a7a6b5d96c438c013ea974bae96, type: 2}
   rseDeviceRegister: {fileID: 11400000, guid: 8060a49d05b4a4146b86166ea832c518, type: 2}

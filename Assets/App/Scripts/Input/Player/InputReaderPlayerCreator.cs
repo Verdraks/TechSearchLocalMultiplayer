@@ -16,9 +16,7 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
 
     public void EnableInputReader()
     {
-        _inputActionPlayer ??= new InputActionPlayerCreator();
         _inputActionPlayer.Controller.SetCallbacks(this);
-        _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(new InputDevice[] {Mouse.current });
         _inputActionPlayer.Enable();
         Cursor.visible = false;
     }
@@ -60,6 +58,19 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
 
     void InputActionPlayerCreator.IControllerActions.OnMove(InputAction.CallbackContext context)
     {
-        onInputMove.Invoke(Macro2D.MousePosWorld);
+        if (context.phase is InputActionPhase.Canceled) return;
+
+        if (context.control.device is Keyboard or Mouse)
+            onInputMove.Invoke(Macro2D.MousePosWorld);
+        else
+        {
+            Debug.Log("fesfesf");
+        }
+    }
+
+    void IInputReader.AssignDevice(InputDevice[] inputDevices)
+    {
+        _inputActionPlayer = new InputActionPlayerCreator();
+        _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(inputDevices);
     }
 }

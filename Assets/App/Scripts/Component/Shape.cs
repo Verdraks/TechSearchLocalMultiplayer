@@ -9,7 +9,7 @@ public class Shape : MonoBehaviour
 
     [SerializeField] private RSE_SceneLoaded rseSceneLoaded;
     
-    private const float Lifetime = 3f;
+    private const float Lifetime = 5f;
     private const float MassMultiplier = 1.5f;
     private const float MassBase = 1f;
     

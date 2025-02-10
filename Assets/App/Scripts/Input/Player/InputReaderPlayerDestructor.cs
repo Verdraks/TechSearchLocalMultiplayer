@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using UnityEngine.Serialization;
 
 public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActionPlayerDestructor.IControllerActions
 {
@@ -17,9 +16,7 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
 
     void IInputReader.EnableInputReader()
     {
-        _inputActionPlayer ??= new InputActionPlayerDestructor();
         _inputActionPlayer.Controller.SetCallbacks(this);
-        _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(new InputDevice[] {Keyboard.current });
         _inputActionPlayer.Enable();
     }
 
@@ -47,7 +44,7 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
         }
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    void InputActionPlayerDestructor.IControllerActions.OnJump(InputAction.CallbackContext context)
     {
         switch (context.phase)
         {
@@ -61,5 +58,11 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
                 onInputJumpCanceled?.Invoke();
                 break;
         }
+    }
+
+    void IInputReader.AssignDevice(InputDevice[] inputDevices)
+    {
+        _inputActionPlayer = new InputActionPlayerDestructor();
+        _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(inputDevices);
     }
 }

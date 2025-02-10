@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localMultiplayerSettings: {fileID: 11400000, guid: f50c92687a9153f44bb17bf4a5263ef1, type: 2}
-  inputReaderFactory: {fileID: 11400000, guid: d9cfeaffabe9a7d49b26cf1b4293ca1f, type: 2}
+  inputReaderFactory: {fileID: 11400000, guid: dab35dbc7aa3dd8498d0b2f1db974419, type: 2}
   spawningStrategy: {fileID: 11400000, guid: eb33d0c2478a17f4aa6221d858156705, type: 2}
-  rsoDevicesRegistered: {fileID: 11400000, guid: 04d23efd06ee45d489d883af2368a5a0, type: 2}
+  rsoDevicesRegistered: {fileID: 11400000, guid: 6c27dd3db71ea8f41b4f32cd3193a6f1, type: 2}
   rseDeviceRegister: {fileID: 11400000, guid: 8060a49d05b4a4146b86166ea832c518, type: 2}
   rseDeviceDataCreated: {fileID: 11400000, guid: ee4e5235ad241cb46bb1b273034c0fbf, type: 2}
 --- !u!1 &870169870780112908
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d70910e119bed447ae77e2cef743df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rsoDeviceRegistered: {fileID: 11400000, guid: 04d23efd06ee45d489d883af2368a5a0, type: 2}
+  rsoDeviceRegistered: {fileID: 11400000, guid: 6c27dd3db71ea8f41b4f32cd3193a6f1, type: 2}
   rseClearDevicesRegistered: {fileID: 11400000, guid: 6d5ff015047a95f41bbc2e3c8d3db8dd, type: 2}
 --- !u!114 &2445029030465145849
 MonoBehaviour:
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527c8e0637db2dc448c8af48345e321f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rsoDeviceRegistered: {fileID: 11400000, guid: 04d23efd06ee45d489d883af2368a5a0, type: 2}
+  rsoDeviceRegistered: {fileID: 11400000, guid: 6c27dd3db71ea8f41b4f32cd3193a6f1, type: 2}
   rseDeviceReconnected: {fileID: 11400000, guid: de1a6f323634eeb44b6217c57c178489, type: 2}
   rseDeviceDisconnected: {fileID: 11400000, guid: 01ce038602a82fb408c97e6d98c275cf, type: 2}
 --- !u!1 &5855077314722403552
@@ -207,4 +207,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localMultiplayerSettings: {fileID: 11400000, guid: f50c92687a9153f44bb17bf4a5263ef1, type: 2}
   splitScreenFactory: {fileID: 11400000, guid: f1b340fc5a1468a4ea98ddc0125a66e1, type: 2}
-  rsoDevicesRegistered: {fileID: 11400000, guid: 04d23efd06ee45d489d883af2368a5a0, type: 2}
+  rsoDevicesRegistered: {fileID: 11400000, guid: 6c27dd3db71ea8f41b4f32cd3193a6f1, type: 2}
