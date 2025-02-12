@@ -1,7 +1,9 @@
+using System;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.Serialization;
 
@@ -13,6 +15,7 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
     public UnityEvent<Vector2> onInputMove;
     
     private InputActionPlayerCreator _inputActionPlayer;
+    private MouseWrapper mouseWrapper;
 
     public void EnableInputReader()
     {
@@ -33,12 +36,18 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
         return gameObject;
     }
 
+    private void Update()
+    {
+        mouseWrapper.SetMousePosition(_inputActionPlayer.Controller.Move.ReadValue<Vector2>());
+        onInputMove.Invoke(mouseWrapper.GetWorldMousePos());
+    }
+
     void InputActionPlayerCreator.IControllerActions.OnShoot(InputAction.CallbackContext context)
     {
         switch (context.phase)
         {
             case InputActionPhase.Started:
-                onInputShoot.Invoke(Macro2D.MousePosWorld);
+                onInputShoot.Invoke(mouseWrapper.GetWorldMousePos());
                 break;
         }
     }
@@ -58,19 +67,21 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
 
     void InputActionPlayerCreator.IControllerActions.OnMove(InputAction.CallbackContext context)
     {
-        if (context.phase is InputActionPhase.Canceled) return;
-
-        if (context.control.device is Keyboard or Mouse)
-            onInputMove.Invoke(Macro2D.MousePosWorld);
-        else
-        {
-            Debug.Log("fesfesf");
-        }
     }
 
     void IInputReader.AssignDevice(InputDevice[] inputDevices)
     {
         _inputActionPlayer = new InputActionPlayerCreator();
         _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(inputDevices);
+        
+        switch (inputDevices[0])
+        {
+            case Gamepad:
+                mouseWrapper = new MouseWrapperGamepad();
+                break;
+            default:
+                mouseWrapper = new MouseWrapperDevice();
+                break;
+        }
     }
 }

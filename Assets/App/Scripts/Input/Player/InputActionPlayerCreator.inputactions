@@ -46,17 +46,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "QZSD",
-                    "id": "b89a9e73-fdba-49a2-a334-d2104f61a45a",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "",
                     "id": "0deda46b-3ffe-47c6-863a-9f711f2dc859",
                     "path": "<Gamepad>/rightTrigger",

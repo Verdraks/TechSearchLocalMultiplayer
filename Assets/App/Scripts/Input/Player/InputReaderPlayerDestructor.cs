@@ -33,15 +33,7 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
 
     void InputActionPlayerDestructor.IControllerActions.OnMove(InputAction.CallbackContext context)
     {
-        switch (context.phase)
-        {
-            case InputActionPhase.Started:
-                onInputMove?.Invoke(context.ReadValue<Vector2>());
-                break;
-            case InputActionPhase.Canceled:
-                onInputMove?.Invoke(context.ReadValue<Vector2>());
-                break;
-        }
+        onInputMove?.Invoke(context.ReadValue<Vector2>());
     }
 
     void InputActionPlayerDestructor.IControllerActions.OnJump(InputAction.CallbackContext context)

@@ -15,6 +15,7 @@ public class ShootAbility : MonoBehaviour
     
     public void TryShoot(Vector2 positionShoot)
     {
+        print("trigger");
         if (!_canShoot) return;
         Shoot(ref positionShoot);
     }

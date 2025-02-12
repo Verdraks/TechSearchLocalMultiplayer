@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class PencilAbility : MonoBehaviour
@@ -18,6 +19,7 @@ public class PencilAbility : MonoBehaviour
     private bool _isDrawing;
     private bool _isInDrawingArea;
     private float _pencilInk;
+    private Vector2 _drawPosition;
 
     private readonly List<Vector2> _points = new();
     private readonly RaycastHit2D[] _hitsAreaDraw = new RaycastHit2D[1];
@@ -28,9 +30,9 @@ public class PencilAbility : MonoBehaviour
 
     private void Awake() => _pencilInk = maxPencilInk/2;
 
-    public void Move(Vector2 targetPosition)
+    public void PencilMove(Vector2 position)
     {
-        Debug.Log(message: targetPosition);
+        _drawPosition = position;
     }
 
     public void Draw()
@@ -45,7 +47,7 @@ public class PencilAbility : MonoBehaviour
 
     private void CheckPencilInDrawingArea()
     {
-        _isInDrawingArea = Physics2D.RaycastNonAlloc(Macro2D.MousePosWorld, Vector2.zero,_hitsAreaDraw ,Mathf.Infinity,layerMaskDraw) > 0;
+        _isInDrawingArea = Physics2D.RaycastNonAlloc(_drawPosition, Vector2.zero,_hitsAreaDraw ,Mathf.Infinity,layerMaskDraw) > 0;
     }
 
     private void Update()
@@ -71,12 +73,11 @@ public class PencilAbility : MonoBehaviour
         
         while (_isDrawing && _pencilInk >= pencilInkCost && _isInDrawingArea)
         {
-            Vector2 mousePosition = Macro2D.MousePosWorld;
             
-            if (_points.Count == 0 || (_points[^1] - mousePosition).sqrMagnitude > DistancePointThreshold)
+            if (_points.Count == 0 || (_points[^1] - _drawPosition).sqrMagnitude > DistancePointThreshold)
             {
-                _points.Add(mousePosition);
-                _shape.UpdateShape(_points.Count,mousePosition);
+                _points.Add(_drawPosition);
+                _shape.UpdateShape(_points.Count,_drawPosition);
                 _pencilInk -= pencilInkCost;
             }
             yield return null;
