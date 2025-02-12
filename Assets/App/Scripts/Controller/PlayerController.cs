@@ -1,15 +1,6 @@
 using System;
 using UnityEngine;
 
-namespace TarodevController
-{
-    /// <summary>
-    /// Hey!
-    /// Tarodev here. I built this controller as there was a severe lack of quality & free 2D controllers out there.
-    /// I have a premium version on Patreon, which has every feature you'd expect from a polished controller. Link: https://www.patreon.com/tarodev
-    /// You can play and compete for best times here: https://tarodev.itch.io/extended-ultimate-2d-controller
-    /// If you hve any questions or would like to brag about your score, come to discord: https://discord.gg/tarodev
-    /// </summary>
     public class PlayerController : MonoBehaviour, IDamageable
     {
         [Header("Settings")]
@@ -17,7 +8,11 @@ namespace TarodevController
         [Header("References")]
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private CapsuleCollider2D _col;
+        [Space(10)] 
+        [SerializeField] private RSO_Position rsoPosition;
+        [Header("Output")]
         [SerializeField] private RSE_PlayerDie rsePlayerDie;
+        
         
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
@@ -63,7 +58,11 @@ namespace TarodevController
             _frameInput.JumpHeld = false;
         }
         
-        private void Update() => _time += Time.deltaTime;
+        private void Update()
+        {
+            _time += Time.deltaTime;
+            rsoPosition.Value = transform.position;
+        }
 
         private void FixedUpdate()
         {
@@ -188,6 +187,11 @@ namespace TarodevController
         {
             rsePlayerDie.Call(gameObject);
         }
+
+        private void OnDestroy()
+        {
+            rsoPosition.Value = Vector3.zero;
+        }
     }
 
     public struct FrameInput
@@ -196,4 +200,3 @@ namespace TarodevController
         public bool JumpHeld;
         public Vector2 Move;
     }
-}
