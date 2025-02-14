@@ -1,11 +1,24 @@
 Context:
+
 	Tech Search for school project 2nd year grade
+
 Project:
-	Recreate Multiplayer Local Unity with new Input System without "InputPlayerManager" & "InputPlayer" components.
-	Test system with 2 players in one PC : keyboard + mouse
-	Keyboard player control a player that must reach 3 times a point in a limited time
-	Mouse player control a pencil that can draw shape and inflige damage to player, must survive until time end
-	Aim, win by complete goal player
+
+	- Support 2 player, keyboard + mouse and gamepads
+	- 2 Player, the "creator" can draw shape in black area and shoot on specific object
+		    the "destructor can move and jump
+	- Aim: reach next level by travel the level until find the blue object
+	- To join, press Button South or Space, game start when two player are connected
+	- Controls:
+		"Creator":
+		- Move: QD or Left Joystick
+		- Jump: Space or South Button Gamepad
+		"Destructor":
+		- Move: Left Joystick or Mouse
+		- Draw: Left Mouse Button or West Button Gamepad
+		- Shoot: Right Mouse Button or Right Trigger Gamepad
+
 Software:
+
 	Unity 2022.3.44f1
 	Windows 10+
