@@ -6,6 +6,7 @@ Tech Search Multiplayer:
 	    the "destructor can move and jump
 
 - Aim: reach next level by travel the level until find the blue object
+- To join, press Button South or Space, game start when two player are connected
 
 -controls:
 	"Creator":
@@ -16,3 +17,4 @@ Tech Search Multiplayer:
 	- Move: Left Joystick or Mouse
 	- Draw: Left Mouse Button or West Button Gamepad
 	- Shoot: Right Mouse Button or Right Trigger Gamepad
+	
