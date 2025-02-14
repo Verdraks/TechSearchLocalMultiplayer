@@ -19,14 +19,12 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
 
     public void EnableInputReader()
     {
-        _inputActionPlayer.Controller.SetCallbacks(this);
         _inputActionPlayer.Enable();
         Cursor.visible = false;
     }
 
     public void DisableInputReader()
     {
-        _inputActionPlayer.Controller.SetCallbacks(null);
         _inputActionPlayer.Disable();
         Cursor.visible = true;
     }
@@ -73,6 +71,7 @@ public class InputReaderPlayerCreator : MonoBehaviour, IInputReader, InputAction
     {
         _inputActionPlayer = new InputActionPlayerCreator();
         _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(inputDevices);
+        _inputActionPlayer.Controller.SetCallbacks(this);
         
         switch (inputDevices[0])
         {

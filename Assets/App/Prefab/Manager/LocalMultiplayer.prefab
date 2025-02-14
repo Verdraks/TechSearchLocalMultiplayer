@@ -49,6 +49,7 @@ MonoBehaviour:
   spawningStrategy: {fileID: 11400000, guid: eb33d0c2478a17f4aa6221d858156705, type: 2}
   rsoDevicesRegistered: {fileID: 11400000, guid: 6c27dd3db71ea8f41b4f32cd3193a6f1, type: 2}
   rseDeviceRegister: {fileID: 11400000, guid: 8060a49d05b4a4146b86166ea832c518, type: 2}
+  rseClearDevicesRegistered: {fileID: 11400000, guid: 6d5ff015047a95f41bbc2e3c8d3db8dd, type: 2}
   rseDeviceDataCreated: {fileID: 11400000, guid: ee4e5235ad241cb46bb1b273034c0fbf, type: 2}
 --- !u!1 &870169870780112908
 GameObject:
@@ -59,7 +60,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23030505441432196}
-  - component: {fileID: 8135283180335895075}
   - component: {fileID: 2445029030465145849}
   m_Layer: 0
   m_Name: LocalMultiplayer
@@ -86,20 +86,6 @@ Transform:
   - {fileID: 7696188328262721876}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8135283180335895075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870169870780112908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d70910e119bed447ae77e2cef743df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rsoDeviceRegistered: {fileID: 11400000, guid: 6c27dd3db71ea8f41b4f32cd3193a6f1, type: 2}
-  rseClearDevicesRegistered: {fileID: 11400000, guid: 6d5ff015047a95f41bbc2e3c8d3db8dd, type: 2}
 --- !u!114 &2445029030465145849
 MonoBehaviour:
   m_ObjectHideFlags: 0

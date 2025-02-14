@@ -20,7 +20,7 @@ namespace BT.LocalMultiplayer
 
     public struct DeviceData
     {
-        public InputDevice InputDevice;
+        public InputDevice[] InputDevice;
         public int DeviceOrderMonitor;
         public IInputReader MonitoredInputReader;
     }

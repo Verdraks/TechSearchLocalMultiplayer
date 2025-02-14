@@ -16,13 +16,13 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
 
     void IInputReader.EnableInputReader()
     {
-        _inputActionPlayer.Controller.SetCallbacks(this);
         _inputActionPlayer.Enable();
+        Debug.Log(_inputActionPlayer.Controller.enabled);
+        
     }
 
     void IInputReader.DisableInputReader()
     {
-        _inputActionPlayer.Controller.SetCallbacks(null);
         _inputActionPlayer.Disable();
     }
 
@@ -56,5 +56,6 @@ public class InputReaderPlayerDestructor : MonoBehaviour, IInputReader,InputActi
     {
         _inputActionPlayer = new InputActionPlayerDestructor();
         _inputActionPlayer.devices = new ReadOnlyArray<InputDevice>(inputDevices);
+        _inputActionPlayer.Controller.SetCallbacks(this);
     }
 }

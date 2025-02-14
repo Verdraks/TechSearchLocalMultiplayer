@@ -18,13 +18,15 @@ namespace BT.LocalMultiplayer
         private void DeviceChangeCheck(InputDevice device, InputDeviceChange deviceChange)
         {
             if (!DeviceExistInGame(device, out var index)) return;
-
+            
+            
+            
             switch (deviceChange)
             {
                 case InputDeviceChange.Reconnected:
                     rseDeviceReconnected.Call(rsoDeviceRegistered.Value[index]);
                     break;
-                case InputDeviceChange.Disconnected:
+                case InputDeviceChange.Removed:
                     rseDeviceDisconnected.Call(rsoDeviceRegistered.Value[index]);
                     break;
             }
@@ -36,7 +38,7 @@ namespace BT.LocalMultiplayer
             for (var i = 0; i < rsoDeviceRegistered.Value.Count; i++)
             {
                 index = i;
-                if (rsoDeviceRegistered.Value[i].InputDevice == device) break;
+                if (rsoDeviceRegistered.Value[i].InputDevice[0] == device) break;
                 if (i == rsoDeviceRegistered.Value.Count -1) return false;
             }
 

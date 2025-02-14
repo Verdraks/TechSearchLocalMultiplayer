@@ -33,7 +33,7 @@ public class MouseWrapperGamepad : MouseWrapper
 
 public class MouseWrapperDevice : MouseWrapper
 {
-    public Vector2 MousePosition { get; set; }
+    public Vector2 MousePosition { get; set; } =  new ((float)Screen.width / 2, (float)Screen.height / 2);
 
     public Vector2 GetWorldMousePos()
     {

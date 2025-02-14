@@ -6,8 +6,7 @@ namespace BT.LocalMultiplayer
     {
         [Header("Input")]
         [SerializeField] private RSE_DeviceReconnected rseDeviceReconnected;
-        [SerializeField] private RSE_DeviceReconnected rseDeviceDisconnected;
-        
+        [SerializeField] private RSE_DeviceDisconnected rseDeviceDisconnected;
         
         private void OnEnable()
         {
@@ -24,14 +23,15 @@ namespace BT.LocalMultiplayer
 
         private void DeviceDisconnected(DeviceData deviceData)
         {
+            deviceData.MonitoredInputReader.GetControlledGameObject().SetActive(false);
             deviceData.MonitoredInputReader.DisableInputReader();
-            deviceData.MonitoredInputReader?.GetControlledGameObject().SetActive(false);
         }
 
         private void DeviceReconnected(DeviceData deviceData)
         {
+            deviceData.MonitoredInputReader.AssignDevice(deviceData.InputDevice);
             deviceData.MonitoredInputReader.EnableInputReader();
-            deviceData.MonitoredInputReader?.GetControlledGameObject().SetActive(true);
+            deviceData.MonitoredInputReader.GetControlledGameObject().SetActive(true);
         }
     }
 }
